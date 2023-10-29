@@ -1,0 +1,51 @@
+COMPILE
+gcc audio.c fileMan.c -o random -lm
+
+TODO
+- Debugmalloc avagy memLeak ellenőrzés + hibaüzenetek írása
+
+FILEMAN
+  - fileMan line28 fix lista érték javítás? !! NE LEGYEN STATIKUS!! Láncolt lista
+  - .wav-ra szűrés !! 
+
+FORRÁSOK
+	TUI 
+	https://www.viget.com/articles/c-games-in-ncurses-using-multiple-windows/
+
+
+	## ASCII art
+	#https://ascii.co.uk/art/giraffe
+
+               ___,A.A_  __
+               \   ,   7"_/
+                ~"T(  r r)
+                  | \    Y
+                  |  ~\ .|
+                  |   |`-'
+                  |   |
+                  |   |
+                  |   |
+                  |   |
+                  j   l
+                 /     \
+                Y       Y
+                l   \ : |
+                /\   )( (
+               /  \  I| |\
+              Y    I l| | Y
+              j    ( )( ) l
+             / .    \ ` | |\   -Row
+            Y   \    i  | ! Y
+            l   .\_  I  |/  |
+             \ /   [\[][]/] j
+          ~~~~~~~~~~~~~~~~~~~~~~~
+               ->Giraffe<-
+
+
+
+
+
+
+
+
+
