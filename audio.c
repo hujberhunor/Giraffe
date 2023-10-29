@@ -27,7 +27,6 @@ int songSelect(char** array, int sizeArray){
 
   printf("Select a song! ");
   scanf("%d", &selected);
-  if(selected > sizeArray) printf("Wrong input! \n"); return -1;
 
   return selected-1;
 }
@@ -42,7 +41,7 @@ void progesssBar(ma_result soundResult , int lengthSec){
     iter++;
   }
 }
-
+/* NEEDS ITS OWN HEADER */
 
 
 
