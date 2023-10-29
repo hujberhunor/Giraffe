@@ -16,6 +16,36 @@
 #include <stdio.h>
 #include <string.h>
 
+
+int songSelect(char** array, int sizeArray){
+  int selected = 0;
+ 
+  /* Print the songs in the list */
+  for(int i = 0; i < sizeArray; i++){
+    printf("%d\t| %s\n",i+1, array[i]);
+  }
+
+  printf("Select a song! ");
+  scanf("%d", &selected);
+  if(selected > sizeArray) printf("Wrong input! \n"); return -1;
+
+  return selected-1;
+}
+
+void progesssBar(ma_result soundResult , int lengthSec){
+  int iter = 0;
+  while(soundResult == MA_SUCCESS){
+    //printf("result = %d ", (int) cursor);
+    printf("\r%i/%i",  iter, lengthSec);
+    fflush(stdout); 
+    sleep(1);
+    iter++;
+  }
+}
+
+
+
+
 int main(){
   // Decoder 
   ma_decoder decoder;
@@ -33,15 +63,17 @@ int main(){
   ma_result resultCursor;
   ma_engine engine;
   ma_result resultSound;
-  
+ 
   /* from fileMan */
   char* dir = "./songs/";
-  int songListSize;                               // size of the songList 
-  char** songList = dir_read(dir, &songListSize); // Reading dir MEMORY ALREDY ALLOCATED
-  char* songPath = concat(dir, songList[2]); 
+  int songArraySize;                               // size of the songList 
+  char** songArray = dir_read(dir, &songArraySize); // Reading dir MEMORY ALREDY ALLOCATED
+  
+  int selected = songSelect(songArray, songArraySize);
+  
+  char* songPath = concat(dir, songArray[selected]); 
   char *fp = songPath;                            // dir + song name concatenated 
 
-  /* ############### */
 
 
   /* Decode */
@@ -69,15 +101,8 @@ int main(){
   if (resultCursor != MA_SUCCESS) return result;
   
   if(resultSound == MA_SUCCESS) printf("Currently playing: %s \n", fp);
+  progesssBar(resultSound ,lenInSec);
 
-  int iter = 0;
-  while(resultSound == MA_SUCCESS){
-    //printf("result = %d ", (int) cursor);
-    printf("\r%i/%i",  iter, lenInSec);
-    fflush(stdout);
-    sleep(1);
-    iter++;
-  }
 
   ma_decoder_uninit(&decoder);
   ma_engine_uninit(&engine);
