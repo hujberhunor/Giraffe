@@ -3,14 +3,24 @@
 [Figma board](https://www.figma.com/file/EsgDA7eSZUrgqkofuwwLih/Giraffe_board?type=whiteboard&node-id=0%3A1&t=zbLixc6FVzcbymoX-1)
 
 ### COMPILE
-gcc audio.c fileMan.c -o random -lm
+gcc main.c audio.c fileMan.c -o main -lm
 
 ### TODO
+
+KELL-E
+- előre hátra tekerés
+- next/prev song
+- shuffle 
+- ARTIST ÉS DAL CÍM KÜLÖN / STRUKTÚRÁBAN KEZELÉSE?? 
+- Lejátszási listák
+- keresési lehtőség
 
 AUDIO.c
 - Debugmalloc avagy memLeak ellenőrzés + hibaüzenetek írása
 - audio.h hibaszűrés
-- song dir path változtatható terminal argumentummal
+- song dir path változtatható terminal argumentummal??
+- Pause funct eltárolni a current framet majd ahhoz ugrani
+- restart function rendberázás (induljon el a dal restart után)
 
 FILEMAN.c
   - fileMan line28 fix lista érték javítás? !! NE LEGYEN STATIKUS!! Láncolt lista
