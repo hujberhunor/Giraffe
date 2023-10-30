@@ -12,7 +12,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <stdio.h>
-#include "./inc/fileMan.h"
+#include "./inc/giraffe.h"
 
 /* Opens a directory and reads the files inside that dir, then
  * puts them into a list wich is the return value
@@ -31,7 +31,7 @@ char** dir_read(char *dir_path, int *size){
   if (d == NULL) printf("Error in reading of the file\n");
 
   /* Pre? allocating memory for the array */
-  fileList = (char**) malloc(sizeof(char*) * 50); // HIBA!! 50 feletti számoknál mi van?
+  fileList = (char**) malloc(sizeof(char*) * 100); // HIBA!! 50 feletti számoknál mi van?
   if(fileList == NULL) printf("Memory allocation error\n");
 
   /* Files to the list */

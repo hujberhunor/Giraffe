@@ -1,4 +1,5 @@
 COMPILE
+gcc main.c audio.c fileMan.c -o main -lm && ./main
 gcc audio.c fileMan.c -o random -lm
 
 TODO
