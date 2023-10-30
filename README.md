@@ -19,21 +19,22 @@ FILEMAN.c
 ## Functions in giraffe.h
 
 ### Functions from fileMan.c
-dir_read
-dir_free !!
-get_artist
-concat
-
+- dir_read
+- dir_free !!
+- get_artist
+- concat
+ 
 ### Functions from audio.c
-songSelect
-lenInSec
-songCurrSec
-restartSong
-decodeSing
-setupMA
-cleanupMA
-??progressBar??  (not in header)
+- songSelect
+- lenInSec
+- songCurrSec
+- restartSong
+- decodeSing
+- setupMA
+- cleanupMA
+- ??progressBar??  (not in header)
 
 ## Sources that I used or inspired by
 [wax](https://github.com/znschaffer/wax/tree/main)
+
 [Miniaudio documentation](https://miniaud.io/docs/manual/index.html)
