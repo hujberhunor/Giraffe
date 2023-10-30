@@ -1,5 +1,6 @@
 # Giraffe_v2
 
+[Figma board](https://www.figma.com/file/EsgDA7eSZUrgqkofuwwLih/Giraffe_board?type=whiteboard&node-id=0%3A1&t=zbLixc6FVzcbymoX-1)
 
 ### COMPILE
 gcc audio.c fileMan.c -o random -lm
