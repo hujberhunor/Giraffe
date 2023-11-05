@@ -9,6 +9,8 @@
 */
 
 #include <ncurses.h>
+#include "./inc/giraffe.h"
+
 
 void draw_borders(WINDOW *screen) {
   int x, y, i;

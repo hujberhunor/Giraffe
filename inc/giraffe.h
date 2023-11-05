@@ -10,7 +10,6 @@
 
 
 /* GLOBAL VARIABLES (MiniAudio) (SORRY) */
-/*
 // Decoder 
 extern  ma_decoder decoder;
 extern  ma_result resultDecoder;
@@ -29,7 +28,6 @@ extern  ma_engine engine;
 extern  ma_result resultSound;
 extern  ma_sound sound;
 
-*/
 /* #### FROM FILEMAN #### */
 
 char** dir_read(char *dir_path, int *size);
@@ -70,6 +68,11 @@ int decodeSong(char* filePath);
 
 /* INITIALIZE THE RESOURCE MANAGER AND THE SOUND Enginer */
 int setupMA();
+
+
+void progressBar();
+
+
 void playSong(char* songFile);
 
 /* MiniAudio CLEANUP, BASICALLY FREES THE ALLOCATED MEMORY BY THE

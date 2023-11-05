@@ -56,16 +56,17 @@ int songSelect(char** array, int sizeArray){
 int lenInSec(){
   resultFrameSec = ma_data_source_get_length_in_pcm_frames(&decoder, &length);
   if (resultFrameSec != MA_SUCCESS) {return result;} 
+
   return (int) length/(float)decoder.outputSampleRate;
 }
 
-
 /* RETURNS THE TIME THAT HAS ELLAPSED SINCE THE START OF THE SONG */
 int songCurrSec() {
-  float pCursor;
-  result = ma_sound_get_cursor_in_seconds(&sound, &pCursor);
-  if (MA_SUCCESS != result) return 0;
-  return (int) (pCursor);
+  float currSec;
+  result = ma_sound_get_cursor_in_seconds(&sound, &currSec);
+  if (MA_SUCCESS != result) return -1;
+ 
+  return (int) currSec;
 }
 
 
@@ -75,10 +76,10 @@ void restartSong(){
 
 
 /* PROGRESS "BAR" */
-void progesssBar(ma_result soundResult){
+void progressBar(){
   int iter = 0;
   
-  while(soundResult == MA_SUCCESS){
+  while(setupMA() == 0){
     //printf("result = %d ", (int) cursor);
     printf("\r%i/%i | %d", iter, lenInSec(), songCurrSec());
     fflush(stdout); 

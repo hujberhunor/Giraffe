@@ -26,11 +26,40 @@ int main(){
 
   setupMA();
   decodeSong(songFile);
+
+
+  while (getchar() != 'e') {
+    printf("Currently playing: %s \n", songFile);
+    playSong(songFile);
+    while (true) {
+       printf("\r%i/%i", songCurrSec(), lenInSec());
+       fflush(stdout); 
+    }
+  }
+
+/*
+  while (getchar() != 'e') {
+    printf("%d\n", songCurrSec());
+    ma_sound_start(&sound);
+  }
+  /*
+  int a = 0;
+  while(a == 0){ 
+    scanf("%d", &a);
+    ma_sound_init_from_file(&engine, songFile , MA_SOUND_FLAG_STREAM, NULL , NULL, &sound);
+    ma_sound_start(&sound);
+    int b = songCurrSec();
+    printf("songCurrSec() = %d // %d \n", b, lenInSec());
+   
+  }
   
-  printf("\nPress e to exit ");
+ /* 
+  printf("\nPress e to exit \n");
   while(getchar() != 'e'){ 
     playSong(songFile); 
+    printf("songCurrSec() = %d | %d \n", i++, songCurrSec());
   }
+
 
   /* CLEANUP */
   dir_free(songArray, songArraySize);

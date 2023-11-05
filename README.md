@@ -49,3 +49,6 @@ FILEMAN.c
 [wax](https://github.com/znschaffer/wax/tree/main)
 
 [Miniaudio documentation](https://miniaud.io/docs/manual/index.html)
+
+### Dependecies
+- ncurses
