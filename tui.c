@@ -11,73 +11,27 @@
 #include <ncurses.h>
 #include "./inc/giraffe.h"
 
+int main(int argc, char **argv)
+{
+    initscr();
 
-void draw_borders(WINDOW *screen) {
-  int x, y, i;
+    // creating a window;
+    // with height = 15 and width = 10
+    // also with start x axis 10 and start y axis = 20
 
-  getmaxyx(screen, y, x); // Size of the terminal
+  int wsize = strlen("Random eloado - random szam");
+    WINDOW *win = newwin(15, wsize, 0, 0);
+    refresh();
 
-  // 4 corners
-  mvwprintw(screen, 0, 0, "+");
-  mvwprintw(screen, y - 1, 0, "+");
-  mvwprintw(screen, 0, x - 1, "+");
-  mvwprintw(screen, y - 1, x - 1, "+");
+    // making box border with default border styles
+    box(win, 0, 0);
+  mvwprintw(win, 0, 3, "Songs");
 
-  // sides
-  for (i = 1; i < (y - 1); i++) {
-    mvwprintw(screen, i, 0, "|");
-    mvwprintw(screen, i, x - 1, "|");
-  }
+    // move and print in window
 
-  // top and bottom
-  for (i = 1; i < (x - 1); i++) {
-    mvwprintw(screen, 0, i, "-");
-    mvwprintw(screen, y - 1, i, "-");
-  }
-}
-
-int main() {
-  int parent_x, parent_y, new_x, new_y;
-  int score_size = 10;
-
-  initscr();
-  noecho();
-
-  // set up initial windows
-  getmaxyx(stdscr, parent_y, parent_x);
-
-  WINDOW *field = newwin(parent_y - score_size, parent_x, 0, 0);
-  WINDOW *score = newwin(score_size, parent_x, parent_y - score_size, 0);
-
-  draw_borders(field);
-  draw_borders(score);
-
-    getmaxyx(stdscr, new_y, new_x);
-
-    if (new_y != parent_y || new_x != parent_x) {
-      parent_x = new_x;
-      parent_y = new_y;
-
-      wresize(field, new_y - score_size, new_x);
-      wresize(score, score_size, new_x);
-      mvwin(score, new_y - score_size, 0);
-
-      wclear(stdscr);
-      wclear(field);
-      wclear(score);
-
-      draw_borders(field);
-      draw_borders(score);
-    }
-
-    // draw to our windows
-    mvwprintw(field, 1, 1, "Files");
-    mvwprintw(score, 1, 1, "Song");
-
-    // refresh each window
-    wrefresh(field);
-    wrefresh(score);
-  endwin();
-
-  return 0;
+    // refreshing the window
+    wrefresh(win);
+    getch();
+    endwin();
+    return 0;
 }

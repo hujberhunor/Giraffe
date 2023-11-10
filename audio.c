@@ -16,6 +16,7 @@
 #include "./inc/debugmalloc.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 /* GLOBAL VARIABLES (MiniAudio) (SORRY) */
   // Decoder 
@@ -79,7 +80,7 @@ void restartSong(){
 void progressBar(){
   int iter = 0;
   
-  while(setupMA() == 0){
+  while(songFinished != 0){
     //printf("result = %d ", (int) cursor);
     printf("\r%i/%i | %d", iter, lenInSec(), songCurrSec());
     fflush(stdout); 
@@ -121,10 +122,27 @@ int setupMA(){
   } 
   return 0;
 }
+/* RETURNS 1 IF THE SONG IS FINISHED AND 0 IF IT IS STILL PLAYING */
+int songFinished() {
+  if (ma_sound_at_end(&sound)) {
+    return 1;
+  }
+  return 0;
+}
+
 
 void playSong(char* songFile){
-  ma_sound_init_from_file(&engine, songFile , MA_SOUND_FLAG_STREAM, NULL , NULL, &sound);
-  ma_sound_start(&sound);
+    ma_sound_init_from_file(&engine, songFile , MA_SOUND_FLAG_STREAM, NULL , NULL, &sound);
+    while (songFinished() != 1) {
+    ma_sound_start(&sound);
+  }
+}
+
+
+
+/* RETURNS IF A SONG IS CURRENTLY PLAYING */
+int isPlaying(){
+  return ma_sound_is_playing(&sound);
 }
 
 /* MiniAudio CLEANUP, BASICALLY FREES THE ALLOCATED MEMORY BY THE

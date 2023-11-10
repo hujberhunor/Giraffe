@@ -2,30 +2,33 @@
 
 [Figma board](https://www.figma.com/file/EsgDA7eSZUrgqkofuwwLih/Giraffe_board?type=whiteboard&node-id=0%3A1&t=zbLixc6FVzcbymoX-1)
 
-### COMPILE
-gcc main.c audio.c fileMan.c -o main -lm
+TUI .wav audio player written in C with miniaudio.  
+
+### COMPILE AND RUN
+CURRENTLY REPLACE MAIN WITH TEST.c | gcc main.c audio.c fileMan.c -o main -lm && ./main
+
 
 ### TODO
 
-KELL-E
-- előre hátra tekerés
-- next/prev song
-- shuffle 
-- ARTIST ÉS DAL CÍM KÜLÖN / STRUKTÚRÁBAN KEZELÉSE?? 
-- Lejátszási listák
-- keresési lehtőség
+TEST/DEV branch
+1. Multithreading (main + dal futtatás)
+2. Nonblocking char megoldás
+
+## FŐ FELADATOK
+- restart
+- Pause
+- Ezekhez devBranch (Multithreading/Nonblocking)
+- make file?
 
 AUDIO.c
 - Debugmalloc avagy memLeak ellenőrzés + hibaüzenetek írása
 - audio.h hibaszűrés
-- song dir path változtatható terminal argumentummal??
-- Pause funct eltárolni a current framet majd ahhoz ugrani
-- restart function rendberázás (induljon el a dal restart után)
+- **Pause funct eltárolni a current framet majd ahhoz ugrani**
+- **restart function rendberázás (induljon el a dal restart után)**
 
 FILEMAN.c
   - fileMan line28 fix lista érték javítás? !! NE LEGYEN STATIKUS!! Láncolt lista
   - .wav-ra szűrés !! 
-
 
 ## Functions in giraffe.h
 
@@ -43,12 +46,12 @@ FILEMAN.c
 - decodeSing
 - setupMA
 - cleanupMA
-- ??progressBar??  (not in header)
+- ??progressBar??  
 
 ## Sources that I used or inspired by
 [wax](https://github.com/znschaffer/wax/tree/main)
 
 [Miniaudio documentation](https://miniaud.io/docs/manual/index.html)
 
-### Dependecies
-- ncurses
+## Dependecies
+- ncurses?

@@ -75,6 +75,10 @@ void progressBar();
 
 void playSong(char* songFile);
 
+int songFinished();
+
+int isPlaying();
+
 /* MiniAudio CLEANUP, BASICALLY FREES THE ALLOCATED MEMORY BY THE
  * MA ENGINE AND DECODER*/
 void cleaupMA();

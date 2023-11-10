@@ -10,6 +10,8 @@
 
 
 #include "./inc/giraffe.h"
+#include <ncurses.h>
+
 
 /* DONT FORGET
  * THE HEADER CONTAINS THE MINIAUDIO GLOBAL VARIABLES*/
@@ -24,41 +26,25 @@ int main(){
   char* songPath = concat(dir, songArray[selected]); 
   char* songFile = songPath; 
 
+  timeout(0); // Needed for the getch(), so it wont stop the thread flow?
+  
   setupMA();
   decodeSong(songFile);
 
 
-  while (getchar() != 'e') {
-    printf("Currently playing: %s \n", songFile);
-    playSong(songFile);
-    while (true) {
-       printf("\r%i/%i", songCurrSec(), lenInSec());
-       fflush(stdout); 
-    }
-  }
+  ma_sound_init_from_file(&engine, songFile , MA_SOUND_FLAG_STREAM, NULL , NULL, &sound);
 
-/*
-  while (getchar() != 'e') {
-    printf("%d\n", songCurrSec());
-    ma_sound_start(&sound);
-  }
-  /*
-  int a = 0;
-  while(a == 0){ 
-    scanf("%d", &a);
-    ma_sound_init_from_file(&engine, songFile , MA_SOUND_FLAG_STREAM, NULL , NULL, &sound);
-    ma_sound_start(&sound);
-    int b = songCurrSec();
-    printf("songCurrSec() = %d // %d \n", b, lenInSec());
-   
-  }
+
+  ma_sound_start(&sound);
   
- /* 
-  printf("\nPress e to exit \n");
-  while(getchar() != 'e'){ 
-    playSong(songFile); 
-    printf("songCurrSec() = %d | %d \n", i++, songCurrSec());
-  }
+  printf("#---#---#---#---#");
+  printf("\nCurrently playing: %s\n", songFile); 
+ 
+  while (songFinished() != 1) {
+    //  printf("\r%i/%i\t ", songCurrSec(), lenInSec());
+    printf("\r%i/%i ", songCurrSec(), lenInSec());
+    fflush(stdout);
+   }
 
 
   /* CLEANUP */
