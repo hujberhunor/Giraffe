@@ -1,6 +1,6 @@
 
 #include "./inc/giraffe.h"
-#include <curses.h>
+#include <ncurses.h>
 
 int main() {
   char* dir = "./songs/";
@@ -27,27 +27,33 @@ int main() {
   timeout(0); // Set getch() to non-blocking mode
 
   printw("#---#---#---#---#");
+  printw("\ne to exit | r to restart | space to pause | s to start\n");
   printw("\nCurrently playing: %s\n", songFile);
 
   while (songFinished() != 1) {
 
-    printw("\r%i/%i ", lenInSec(), songCurrSec());
+    printw("\r%i/%i ", songCurrSec() ,lenInSec());
     refresh();
 
     int ch = getch();
+    int a = 0;
     
     if (ch == 'e') {
        ma_sound_stop(&sound);
        break;
     }
+
     else if (ch == 'r') { 
       restartSong();
     }
+    
     else if (ch == ' ') {
       ma_sound_get_cursor_in_pcm_frames(&sound, &currentTime);
       ma_sound_stop(&sound);
+      a = 1;
     }
-    else if (ch == 's') {
+
+    else if (ch == 's' && a == 0) {
       ma_data_source_seek_to_pcm_frame(&decoder, currentTime);
       ma_sound_start(&sound);
     }
