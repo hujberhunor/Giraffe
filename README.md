@@ -14,14 +14,20 @@ gcc main.c audio.c fileMan.c -o main -lm && ./main
 - restart           [x]
 - Pause             [x] JAVÍTÁSOKRA SZORUL
 - make file         [ ]
+- ADATSTRUKTÚRA A DALOK LEJÁTSZÁSÁNAK SZÁMÁRÓL! [ ]
 
 AUDIO.c
-- Debugmalloc avagy memLeak ellenőrzés + hibaüzenetek írása 
-- audio.h hibaszűrés    
+- Debugmalloc avagy memLeak ellenőrzés + hibaüzenetek írása [ ]
+- Hibaszűrés                                                [ ]
 
-FILEMAN.c
+FILES.c 
   - fileMan line28 fix lista érték javítás? !! NE LEGYEN STATIKUS!! Láncolt lista
   - .wav-ra szűrés !! 
+
+TUI.c
+- Progress bar dal lenght kijelzés  [ ]
+- User error szűrés                 [ ]
+
 
 ## Sources that I used or inspired by
 [wax](https://github.com/znschaffer/wax/tree/main)
