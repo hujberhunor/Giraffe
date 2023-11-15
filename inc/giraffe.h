@@ -5,11 +5,20 @@
 #include <string.h>
 #include <dirent.h>
 #include <stdio.h>
+#include <ncurses.h>
 #include "miniaudio.h"
 #include "debugmalloc.h"
 
 
-/* GLOBAL VARIABLES (MiniAudio) (SORRY) */
+/* GLOBAL VARIABLES */
+
+// ############### TUI.C ###############
+extern  WINDOW *song;
+extern  WINDOW *hint;
+extern  WINDOW *bar; 
+
+
+// ########### AUDIO.C ############
 // Decoder 
 extern  ma_decoder decoder;
 extern  ma_result resultDecoder;
@@ -28,7 +37,16 @@ extern  ma_engine engine;
 extern  ma_result resultSound;
 extern  ma_sound sound;
 
-/* #### FROM FILEMAN #### */
+
+/* #### FROM FILEMAN #### 
+▀███▀▀▀███ ██  ▀███                 
+  ██    ▀█       ██                 
+  ██   █ ▀███    ██   ▄▄█▀██ ▄██▀███
+  ██▀▀██   ██    ██  ▄█▀   ████   ▀▀
+  ██   █   ██    ██  ██▀▀▀▀▀▀▀█████▄
+  ██       ██    ██  ██▄    ▄█▄   ██
+▄████▄   ▄████▄▄████▄ ▀█████▀██████▀
+*/
 
 char** dir_read(char *dir_path, int *size);
 
@@ -41,7 +59,17 @@ char* get_artist(char* fileName);
 
 char* concat(char *string1, char *string2);
 
-/* ### FROM AUDIO ### */
+
+
+/* ### FROM AUDIO ###
+      ██                      ▀███   ██           
+     ▄██▄                       ██                
+    ▄█▀██▄   ▀███  ▀███    ▄█▀▀███ ▀███   ▄██▀██▄ 
+   ▄█  ▀██     ██    ██  ▄██    ██   ██  ██▀   ▀██
+   ████████    ██    ██  ███    ██   ██  ██     ██
+  █▀      ██   ██    ██  ▀██    ██   ██  ██▄   ▄██
+▄███▄   ▄████▄ ▀████▀███▄ ▀████▀███▄████▄ ▀█████▀ 
+*/
 
 /* INPUT: ARRAY WHERE THE SONGS ARE STORED, THE SIZE OF THIS ARRAY
  * THE FUNCTION PRINTS THE SONG TO THE DISPLAY THEN
@@ -82,6 +110,30 @@ int isPlaying();
 /* MiniAudio CLEANUP, BASICALLY FREES THE ALLOCATED MEMORY BY THE
  * MA ENGINE AND DECODER*/
 void cleaupMA();
+
+
+/*
+███▀▀██▀▀███            ██  
+█▀   ██   ▀                
+     ██    ███  ▀███ ▀███  
+     ██      ██    ██   ██  
+     ██      ██    ██   ██  
+     ██      ██    ██   ██  
+   ▄████▄    ▀████▀███▄████▄*/
+
+void printSongs(char* dir);
+
+
+void printHint();
+
+
+void printBar(char* song, int currSec, int len);
+
+
+void selectSong(WINDOW *song, int *selected);
+
+
+void initCurses();
 
 /* ##### */
 #endif 
