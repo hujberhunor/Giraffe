@@ -127,7 +127,7 @@ void printSongs(char* dir);
 void printHint();
 
 
-void printBar(char* song, int currSec, int len);
+void printBar(char* song, int len);
 
 
 void selectSong(WINDOW *song, int *selected);

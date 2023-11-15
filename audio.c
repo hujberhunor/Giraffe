@@ -55,10 +55,10 @@ int songSelect(char** array, int sizeArray){
 
 /* RETURNS THE VALUE OF THE READ FILE LENGTH IN SEC */
 int lenInSec(){
-  resultFrameSec = ma_data_source_get_length_in_pcm_frames(&decoder, &length);
+  resultFrameSec = ma_data_source_get_length_in_pcm_frames(&decoder , &length);
   if (resultFrameSec != MA_SUCCESS) {return result;} 
 
-  return (int) length/(float)decoder.outputSampleRate;
+  return (int) length / (float) decoder.outputSampleRate;
 }
 
 /* RETURNS THE TIME THAT HAS ELLAPSED SINCE THE START OF THE SONG */

@@ -6,59 +6,65 @@ int main(){
   int songArraySize;
   char** songArray = dir_read(dir, &songArraySize);
   int selectedSongIndex;
-  
+ 
+  /* Initalizes ncurses and the windows */
   initCurses();
   // Print the text inside the windows. 
   printSongs(dir);
   printHint();
+  printBar("Select a song", 0); 
   // Refreshing the window 
   wrefresh(song);
   wrefresh(hint);
+  wrefresh(bar);
+
 
   /* USER SELECTS A SONG IN UI, THEN CONCAT THE DIR + THE SELECTED 
    * INDEXES SONG NAME */
   selectSong(song, &selectedSongIndex);
   char* songPath = concat(dir, songArray[selectedSongIndex]);
-  printBar(songPath, songCurrSec(), lenInSec());
+  printBar(songPath, lenInSec());
 
 
+  /* initializes miniaudio, decodes the selected song and plays it */
   setupMA();
   decodeSong(songPath);
   ma_sound_init_from_file(&engine, songPath, MA_SOUND_FLAG_STREAM, NULL, NULL, &sound);
   ma_sound_start(&sound);
 
-  ma_uint64 currentTime;
+
+  /* The MAIN part */
+  ma_uint64 currentTime;  // Stores the frame when paused
   int exit = 0;
- 
 
   while (!(songFinished()) && !(exit)) {
     int ch = getch();
-    int a = songFinished();
 
-  printBar(songPath, songCurrSec(), lenInSec()); 
+    int a = lenInSec();
+
+    printBar(songPath, a); 
     wrefresh(bar);
     
     switch (ch) {
-      case 'e':
+      case 'e':   // EXIT
         ma_sound_stop(&sound);
         exit = 1;
         break;
-      case 'r':
+      case 'r':   // RESTART
         restartSong();
         break;
-      case 32:
+      case 32:    // PAUSE
         ma_sound_get_cursor_in_pcm_frames(&sound, &currentTime);
         ma_sound_stop(&sound);
         break;
-      case 's': 
+      case 's': // START AFTER PAUSE
         ma_data_source_seek_to_pcm_frame(&decoder, currentTime);
         ma_sound_start(&sound);
         break;
-      default:
+      default:  // 
         wrefresh(bar);
     }
   }
-
 
   // -----
   dir_free(songArray, songArraySize);

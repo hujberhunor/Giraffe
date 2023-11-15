@@ -2,6 +2,7 @@
 
 TUI .wav player written in C. 
 Uses miniaudio, only runs on linux. 
+First ever codig project. 
 
 [Figma board](https://www.figma.com/file/EsgDA7eSZUrgqkofuwwLih/Giraffe_board?type=whiteboard&node-id=0%3A1&t=zbLixc6FVzcbymoX-1)
 
@@ -15,6 +16,7 @@ gcc main.c audio.c fileMan.c -o main -lm && ./main
 - Pause             [x] JAVÍTÁSOKRA SZORUL
 - make file         [ ]
 - ADATSTRUKTÚRA A DALOK LEJÁTSZÁSÁNAK SZÁMÁRÓL! [ ]
+- src folder a .c- fileoknak                    [ ]
 
 AUDIO.c
 - Debugmalloc avagy memLeak ellenőrzés + hibaüzenetek írása [ ]
