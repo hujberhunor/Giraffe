@@ -11,7 +11,7 @@
 
 
 /* GLOBAL VARIABLES */
-
+// extern char* dir = "/home/i3hunor/Giraffe/songs/"
 // ############### TUI.C ###############
 extern  WINDOW *song;
 extern  WINDOW *hint;
@@ -36,6 +36,7 @@ extern  ma_uint64 resultCursor;
 extern  ma_engine engine;
 extern  ma_result resultSound;
 extern  ma_sound sound;
+extern  char* dir;
 
 
 /* #### FROM FILEMAN #### 

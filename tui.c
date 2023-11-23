@@ -48,6 +48,11 @@ void printHint(){
   mvwprintw(hint, 8, 2, "This song played x times [WORK IN PROGRESS]");
 }
 
+char* songStat(ma_uint64 paused){
+  if(paused) return "Paused";
+  else if(isPlaying()) return "Playing";
+}
+
 
 /* PRINTS THE STATUS BARS WINDOWS */
 void printBar(char* song, int len){
@@ -63,7 +68,6 @@ void printBar(char* song, int len){
   mvwprintw(bar, 1, 2,"%s", song);
   mvwprintw(bar, 1, 82, "%s", charStatus);
   mvwprintw(bar, 2, 2, "%i / %i", songCurrSec(), len);
-
 }
 
 
@@ -77,7 +81,7 @@ void selectSong(WINDOW *song, int *selected){
   move(cursY, cursX); // Curson in place
 
   while((exit == 0)){
-    ch = wgetch(song);
+    ch = getch();
     switch (ch) {
       case 'j':     // MOVE DOWN
           cursY++;

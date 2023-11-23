@@ -3,9 +3,9 @@ CC = gcc
 CFLAGS = -Wall -g
 LIBS = -lm -lncurses
 
-SRCS = mainUI.c audio.c files.c tui.c
+SRCS = main.c audio.c files.c tui.c
 OBJS = $(SRCS:.c=.o)
-TARGET = mainUI
+TARGET = main
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(LIBS)
@@ -20,3 +20,4 @@ clean:
 
 run: $(TARGET)
 	./$(TARGET)
+

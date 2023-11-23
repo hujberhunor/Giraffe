@@ -14,9 +14,11 @@ gcc main.c audio.c fileMan.c -o main -lm && ./main
 ### TODO
 - restart           [x]
 - Pause             [x] JAVÍTÁSOKRA SZORUL
-- make file         [ ]
+- make file         [x]
 - ADATSTRUKTÚRA A DALOK LEJÁTSZÁSÁNAK SZÁMÁRÓL! [ ]
 - src folder a .c- fileoknak                    [ ]
+- char* memory allokáció áttekintése           [ ]
+- A fájlkezelés (melyik dir, hol van cuccos) ritkaszar, abs pathok használata? [ ]
 
 AUDIO.c
 - Debugmalloc avagy memLeak ellenőrzés + hibaüzenetek írása [ ]
@@ -36,5 +38,4 @@ TUI.c
 
 [Miniaudio documentation](https://miniaud.io/docs/manual/index.html)
 
-## Dependecies
-- ncurses
+## Dependecies - ncurses

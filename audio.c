@@ -36,6 +36,8 @@
   ma_engine engine;
   ma_result resultSound;
   ma_sound sound;
+  
+  char* dir = "/home/i3hunor/Giraffe/songs/";
 
 int songSelect(char** array, int sizeArray){
   int selected = 0;
