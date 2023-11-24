@@ -61,6 +61,8 @@ char* get_artist(char* fileName);
 char* concat(char *string1, char *string2);
 
 
+void createFileOut(char* fileOut);
+int listenTimes(char* fileOut, char* song, int* toDisplay);
 
 /* ### FROM AUDIO ###
       ██                      ▀███   ██           
@@ -125,7 +127,7 @@ void cleaupMA();
 void printSongs(char* dir);
 
 
-void printHint();
+void printHint(int toDisplay);
 
 
 void printBar(char* song, int len);

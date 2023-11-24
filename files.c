@@ -95,6 +95,78 @@ char* concat(char *string1, char *string2){
     return result;
 }
 
+
+/* */
+/* write the file names into the txt from the read dir.
+ * PARAMETER: WHAT FILE TO WRITE INTO*/
+void createFileOut(char* fileOut){
+  FILE* countOut;
+  countOut = fopen(fileOut, "w");
+
+  if(countOut == NULL){
+    printf("This directory does not exist or something like that!\n");
+    fclose(countOut);
+  }
+  
+  int sizeArray; 
+  char** fileList = dir_read("./songs/", &sizeArray);
+  /* SONG NAMES INTO THE FILE */
+  for(int i = 0; i < sizeArray; i++){
+    fprintf(countOut, "%s", fileList[i]);
+    fprintf(countOut, "@ %d \n",0);
+  }
+  dir_free(fileList ,sizeArray);
+  fclose(countOut);
+}
+
+/* ########################## */
+
+int listenTimes(char* fileOut, char* song, int* toDisplay){
+  FILE* file = fopen(fileOut, "r+");
+  if(file == NULL){printf("Error!\n"); return -1;}
+
+  /* FILELISTA BEOLVASÁS és eltárolása */
+  int sizeArray;
+  char** fileList = dir_read("./songs/", &sizeArray);
+ 
+  for(int i = 0; i < sizeArray; i++){
+    char buf[100]; 
+    char *token;
+    char split = '@';
+    int count = 0; 
+    int num = 0;
+
+    fgets(buf, sizeof(buf), file);
+    
+    /* SPLIT FV STACKOWERFLOW */
+    token = strtok(buf, &split);
+    while (token != NULL) {
+      if (++count == 2) {
+         num = atoi(token);
+         break; // Stop after getting the second token
+      }
+      token = strtok(NULL, &split);
+    }
+//    printf("%d num = %d\n",i,  num);
+
+
+  /* HA EGYEZÉS VAN HOZZÁADOK 1et! */
+    if(strcmp(song, fileList[i]) == 0){
+  
+      fseek(file, -3, SEEK_CUR); 
+      fprintf(file, "%d", num+1);
+      *toDisplay = num;
+  }
+  
+  }
+  // ------
+    dir_free(fileList, sizeArray);
+    fclose(file);
+    return 0;
+}
+
+
+
 /* TEST 
 int main(){
   int meret = 0;

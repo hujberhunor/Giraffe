@@ -12,7 +12,7 @@ int main(){
   curs_set(2);
   // Print the text inside the windows. 
   printSongs(dir);
-  printHint();
+  printHint(0);
   printBar("Select a song", 0); 
   // Refreshing the window 
   wrefresh(song);
@@ -34,9 +34,12 @@ int main(){
   ma_sound_start(&sound);
 
 
+  int toDisplay;
+  listenTimes("played.txt", songArray[selectedSongIndex], &toDisplay);
   /* The MAIN part */
   ma_uint64 currentTime;  // Stores the frame when paused
   int exit = 0;
+  
 
   while (!(songFinished()) && !(exit)) {
     int ch = getch();
@@ -45,6 +48,8 @@ int main(){
 
     printBar(songPath, a); 
     wrefresh(bar);
+    printHint(toDisplay);
+    wrefresh(hint);
     
     switch (ch) {
       case 'e':   // EXIT
@@ -62,7 +67,9 @@ int main(){
         ma_data_source_seek_to_pcm_frame(&decoder, currentTime);
         ma_sound_start(&sound);
         break;
-      
+      case 'c':
+        createFileOut("played.txt");
+        break;
     }
   }
 

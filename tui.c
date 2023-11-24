@@ -35,7 +35,7 @@ void printSongs(char* dir){
 
 
 /* PRINTS THE HINT WINDOW WITH TEXT INSIDE OF IT. */
-void printHint(){
+void printHint(int toDisplay){
   box(hint, 0, 0);
   mvwprintw(hint, 0, 1, "Hint");
 
@@ -45,7 +45,8 @@ void printHint(){
   mvwprintw(hint, 4, 2, "Press r to RESTART from 0");
   mvwprintw(hint, 5, 2, "Press j,k to move UP/DOWN");
   mvwprintw(hint, 6, 2, "Press l to SELECT");
-  mvwprintw(hint, 8, 2, "This song played x times [WORK IN PROGRESS]");
+  mvwprintw(hint, 6, 2, "Press c to CREATE OUT FILE");
+  mvwprintw(hint, 8, 2, "This song played %d times", toDisplay);
 }
 
 char* songStat(ma_uint64 paused){
