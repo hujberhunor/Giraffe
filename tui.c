@@ -68,7 +68,7 @@ void printBar(char* song, int len){
   mvwprintw(bar, 0, 2, "Playing");
   mvwprintw(bar, 1, 2,"%s", song);
   mvwprintw(bar, 1, 82, "%s", charStatus);
-  mvwprintw(bar, 2, 2, "%i / %i", songCurrSec(), len);
+  mvwprintw(bar, 2, 2, "%i / %i  ", songCurrSec(), len%1000);
 }
 
 
@@ -101,15 +101,12 @@ void selectSong(WINDOW *song, int *selected){
           exit = 1;
           break;
 
-      case 'h':     // UNSELECT
-          mvwprintw(song, index+1, 2, "[ ]");
-          break;
-
       case 'e':
            exit = 1;
     }
     move(cursY,cursX);
-    
+    if(cursY < 3){cursY++;}
+    else if (cursY > 15){cursY--;}
     wrefresh(song);
   }
 }

@@ -44,9 +44,9 @@ int main(){
   while (!(songFinished()) && !(exit)) {
     int ch = getch();
 
-    int a = lenInSec();
+    int len = lenInSec();
 
-    printBar(songPath, a); 
+    printBar(songPath, len); 
     wrefresh(bar);
     printHint(toDisplay);
     wrefresh(hint);
