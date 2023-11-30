@@ -1,7 +1,9 @@
 # Giraffe
 
 TUI .wav player written in C. 
+
 Uses miniaudio, only runs on linux and the code is worse than anything you have ever seen. 
+
 First ever codig project. 
 
 [Figma board](https://www.figma.com/file/EsgDA7eSZUrgqkofuwwLih/Giraffe_board?type=whiteboard&node-id=0%3A1&t=zbLixc6FVzcbymoX-1)
