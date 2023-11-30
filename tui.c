@@ -22,6 +22,7 @@
 void printSongs(char* dir){
   int size;
   char** songArray = dir_read(dir , &size);
+  if(songArray == NULL){return;}
 
   box(song, 0, 0);
   mvwprintw(song, 0, 1, "Songs");
@@ -74,7 +75,7 @@ void printBar(char* song, int len){
 
 /* TAKES USER INPUT AND THEN "RETUNRS" WITH A INDEX 
  * WITH THAT INDEX YOU CAN PLAY THE SELECTED SONG*/
-void selectSong(WINDOW *song, int *selected){
+void selectSong(WINDOW *song, int *selected, int size){
   int cursX = 5; int cursY = 3;
   int index = 0;
   char ch;
@@ -105,8 +106,8 @@ void selectSong(WINDOW *song, int *selected){
            exit = 1;
     }
     move(cursY,cursX);
-    if(cursY < 3){cursY++;}
-    else if (cursY > 15){cursY--;}
+    if(cursY < 3){cursY++; index += 1;}
+    else if (cursY > size+2){cursY--; index -= 1;}
     wrefresh(song);
   }
 }

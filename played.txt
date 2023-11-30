@@ -1,12 +1,12 @@
-Led Zeppelin - Over The Hills And Far Away.wav@ 19
-Frank Sinatra - My Way.wav@ 4 
-Kontroll Csoport - Eladom.wav@ 4 
-Red Hot Chili Peppers - Can't Stop.wav@ 2 
+Led Zeppelin - Over The Hills And Far Away.wav@ 0 
+Frank Sinatra - My Way.wav@ 0 
+Kontroll Csoport - Eladom.wav@ 0 
+Red Hot Chili Peppers - Can't Stop.wav@ 0 
 Art Blakey & the Jazz Messengers - Moanin'.wav@ 0 
 Hobo Blues Band - A vadászok gyülekezője.wav@ 0 
 Cseh Tamás - Budapest.wav@ 0 
 Bob Dylan - Tombstone Blues.wav@ 0 
 Kispál és a Borz - Autók a tenger felé.wav@ 0 
-Alizée - Moi... Lolita.wav@ 1 
-Rómeó és Júlia - Lehetsz király.wav@ 2 
-Goran Bregović - Kalashnikov.wav@ 1 
+Alizée - Moi... Lolita.wav@ 0 
+Rómeó és Júlia - Lehetsz király.wav@ 0 
+Goran Bregović - Kalashnikov.wav@ 0 

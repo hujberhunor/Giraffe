@@ -28,7 +28,7 @@ char** dir_read(char *dir_path, int *size){
   /* Open and read directory */
   DIR *d = opendir(dir_path);
   struct dirent *dir;
-  if (d == NULL) printf("Error in reading of the file\n");
+  if (d == NULL){ printf("Error in reading of the file OR No ./song/ dir created \n"); closedir(d);}
 
   /* Pre? allocating memory for the array */
   fileList = (char**) malloc(sizeof(char*) * 100); // HIBA!! 50 feletti számoknál mi van?
@@ -104,12 +104,13 @@ void createFileOut(char* fileOut){
   countOut = fopen(fileOut, "w");
 
   if(countOut == NULL){
-    printf("This directory does not exist or something like that!\n");
+    printf("This file does not exist or something like that!\n");
     fclose(countOut);
   }
   
   int sizeArray; 
   char** fileList = dir_read("./songs/", &sizeArray);
+  if(fileList == NULL){return;}
   /* SONG NAMES INTO THE FILE */
   for(int i = 0; i < sizeArray; i++){
     fprintf(countOut, "%s", fileList[i]);
@@ -128,7 +129,8 @@ int listenTimes(char* fileOut, char* song, int* toDisplay){
   /* FILELISTA BEOLVASÁS és eltárolása */
   int sizeArray;
   char** fileList = dir_read("./songs/", &sizeArray);
- 
+  if(fileList == NULL){return;}
+  
   for(int i = 0; i < sizeArray; i++){
     char buf[100]; 
     char *token;

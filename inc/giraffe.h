@@ -133,7 +133,7 @@ void printHint(int toDisplay);
 void printBar(char* song, int len);
 
 
-void selectSong(WINDOW *song, int *selected);
+void selectSong(WINDOW *song, int *selected, int size);
 
 
 void initCurses();

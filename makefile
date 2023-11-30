@@ -1,6 +1,6 @@
 
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g 
 LIBS = -lm -lncurses
 
 SRCS = main.c audio.c files.c tui.c

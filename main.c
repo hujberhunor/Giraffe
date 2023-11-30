@@ -5,7 +5,9 @@ int main(){
   char* dir = "./songs/";
   int songArraySize;
   char** songArray = dir_read(dir, &songArraySize);
+  if(songArray == NULL){printf("Nincs ./songs/ dir!\n"); return -1;}
   int selectedSongIndex;
+
  
   /* Initalizes ncurses and the windows */
   initCurses();
@@ -22,7 +24,7 @@ int main(){
 
   /* USER SELECTS A SONG IN UI, THEN CONCAT THE DIR + THE SELECTED 
    * INDEXES SONG NAME */
-  selectSong(song, &selectedSongIndex);
+  selectSong(song, &selectedSongIndex, songArraySize);
   char* songPath = concat(dir, songArray[selectedSongIndex]);
   printBar(songPath, lenInSec());
 
@@ -35,6 +37,7 @@ int main(){
 
 
   int toDisplay;
+
   listenTimes("played.txt", songArray[selectedSongIndex], &toDisplay);
   /* The MAIN part */
   ma_uint64 currentTime;  // Stores the frame when paused
@@ -74,6 +77,7 @@ int main(){
   }
 
   // -----
+  endwin();
   dir_free(songArray, songArraySize);
   free(songPath);
   void cleanupMAA();
