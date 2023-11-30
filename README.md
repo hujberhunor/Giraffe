@@ -1,28 +1,17 @@
 # Giraffe
 
 TUI .wav player written in C. 
-Uses miniaudio, only runs on linux. 
+Uses miniaudio, only runs on linux and the code is worse than anything you have ever seen. 
 First ever codig project. 
 
 [Figma board](https://www.figma.com/file/EsgDA7eSZUrgqkofuwwLih/Giraffe_board?type=whiteboard&node-id=0%3A1&t=zbLixc6FVzcbymoX-1)
 
-### COMPILE AND RUN
-
-gcc main.c audio.c fileMan.c -o main -lm && ./main
-
-
-### TODO
-- ADATSTRUKTÚRA A DALOK LEJÁTSZÁSÁNAK SZÁMÁRÓL! [ ]
-- src folder a .c- fileoknak                    [ ]
-- char* memory allokáció áttekintése           [ ]
-- A fájlkezelés (melyik dir, hol van cuccos) ritkaszar, abs pathok használata? [ ]
-
-FILES.c 
-  - fileMan line28 fix lista érték javítás? !! NE LEGYEN STATIKUS!! Láncolt lista
-
-TUI.c
-- Progress bar dal lenght kijelzés  [ ]
-- User error szűrés                 [ ]
+## Compile and run:
+```
+cd Giraffe
+make
+./main
+```
 
 
 ## Sources that I used or inspired by
@@ -30,4 +19,12 @@ TUI.c
 
 [Miniaudio documentation](https://miniaud.io/docs/manual/index.html)
 
-## Dependecies - ncurses
+## Dependecies 
+- ncurses
+
+
+## Todo
+FILES.c 
+  - fileMan line28 fix lista érték (Láncolt lista))
+
+
