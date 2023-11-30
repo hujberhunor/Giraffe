@@ -37,7 +37,6 @@ int main(){
 
 
   int toDisplay;
-
   listenTimes("played.txt", songArray[selectedSongIndex], &toDisplay);
   /* The MAIN part */
   ma_uint64 currentTime;  // Stores the frame when paused
@@ -51,9 +50,10 @@ int main(){
 
     printBar(songPath, len); 
     wrefresh(bar);
+    usleep(20000);
     printHint(toDisplay);
     wrefresh(hint);
-    
+    usleep(20000);
     switch (ch) {
       case 'e':   // EXIT
         ma_sound_stop(&sound);

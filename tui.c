@@ -101,6 +101,11 @@ void selectSong(WINDOW *song, int *selected, int size){
           wrefresh(bar);
           exit = 1;
           break;
+      
+      case 'c':
+        createFileOut("played.txt");
+        break;
+
 
       case 'e':
            exit = 1;

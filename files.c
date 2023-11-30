@@ -107,7 +107,7 @@ void createFileOut(char* fileOut){
     printf("This file does not exist or something like that!\n");
     fclose(countOut);
   }
-  
+ 
   int sizeArray; 
   char** fileList = dir_read("./songs/", &sizeArray);
   if(fileList == NULL){return;}
