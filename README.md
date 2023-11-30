@@ -1,6 +1,8 @@
 # Giraffe
 
-TUI .wav player written in C. 
+TUI .wav player written in C.
+![WavKond](https://github.com/hujberhunor/Giraffe/assets/50179148/a258c3bf-f4b0-4331-9374-5e29437fae51)
+
 
 Uses miniaudio, only runs on linux and the code is worse than anything you have ever seen. 
 
