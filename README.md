@@ -1,4 +1,4 @@
-# Giraffe
+# WavKond
 
 TUI .wav player written in C.
 ![WavKond](https://github.com/hujberhunor/Giraffe/assets/50179148/a258c3bf-f4b0-4331-9374-5e29437fae51)
